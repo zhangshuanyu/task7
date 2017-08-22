@@ -6,26 +6,31 @@ var sinonChai = require("sinon-chai");
 var expect = chai.expect;
 chai.use(sinonChai);
 
-var main = require("../lib/main.js");
+const lyrics = require("../lib/lyrics");
+var main = require("../lib/main");
 
 
-describe("测试描述", function(){
+describe("99 bottles of beer on the wall", function(){
     sinon.spy(console, 'log');
 
-    it("测试用例1", function(){
+    it("test1：测试返回所有歌词", function(){
+        var result = main(99);
+        var expect_string = lyrics(99);
 
+        expect(expect_string.join("")).to.equal(result.join(""));
+    });
+
+    it("test2：测试空输入：", function(){
+        var expect_string = '';
         var result = main();
-        var expect_string = '';
-        
-        expect(expect_string).to.equal(result);
-    });
-
-    it("测试用例2", function(){
-
-        main();
-        var result = _.flatten(console.log.args).join("\n");
-        var expect_string = '';
 
         expect(expect_string).to.equal(result);
     });
+
+    it("test3:从56开始：", function () {
+        var result = main(56);
+        var expect_string = lyrics(56);
+
+        expect(expect_string.join("")).to.equal(result.join(""));
+    })
 });
