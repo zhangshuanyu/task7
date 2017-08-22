@@ -13,7 +13,7 @@ var main = require("../lib/main");
 describe("99 bottles of beer on the wall", function(){
     sinon.spy(console, 'log');
 
-    it("test1：测试返回所有歌词", function(){
+    it("test1：测试返回所有歌词 ", function(){
         var result = main(99);
         var expect_string = lyrics(99);
 
